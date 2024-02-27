@@ -1,0 +1,53 @@
+Example Interactions with Sci-bot
+=================================
+
+The following is a series of real conversations between myself and Sci-bot, showcasing its ability to answer a variety of science-related questions:
+
+.. code-block:: none
+    
+    User: What is the theory of general relativity?
+    Sci-bot: Well, after a bit of thought, here's what I found: geometric theory of gravitation
+
+    User: What does a polar bear weigh?
+    Sci-bot: Here's something: 300 - 800 kg (660 - 1,760 lb)
+
+    User: How many seconds are in a year?
+    Sci-bot: Ah, got something for you: 31,536,000
+
+    User: What is the distance between the Earth and Moon?
+    Sci-bot: Here's something: 384,000 km (239,000 mi)
+
+    User: What is the surface temperature of the sun?
+    Sci-bot: Ah, got something for you: 5800 K
+
+    User: What is photosynthess?
+    Sci-bot: There seems to be a spelling error in your question: photosynthess. Please resend the correct message or press enter to continue anyway.
+
+    User: What is photosynthesis?
+    Sci-bot: After exploring various contexts, I couldn't find a precise answer. Could you provide more details or clarify your question?
+
+    User: What does photosynthesis in plants do?
+    Sci-bot: Well, after a bit of thought, here's what I found: convert light energy into chemical energy
+
+    User: What is the boiling point of water?
+    Sci-bot: Ah, got something for you: 99.97 °C
+
+    User: What is dark energy?
+    Sci-bot: Well, after a bit of thought, here's what I found: an unknown form of energy
+
+    User: What is the largest bear?
+    Sci-bot: Well, after a bit of thought, here's what I found: polar bear
+
+    User: Where is New York City?
+    Sci-bot: Well, after a bit of thought, here's what I found: the southern tip of New York State
+
+    User: What does a typical cloud weigh?
+    Sci-bot: Here's something: 500 metric tons
+
+    User: What planet is closest to Earth?
+    Sci-bot: Well, after a bit of thought, here's what I found: Mars
+
+    User: What is diffusion?
+    Sci-bot: Here's something: the net movement of anything
+
+These examples demonstrate Sci-bot's diverse capabilities, from directly answering straightforward queries to handling more complex questions that require context understanding. However, they also highlight areas for improvement, such as better recognition of typos or misspellings and notice the lack of multi-part questions in a single query.

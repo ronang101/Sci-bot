@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Challenges and Solutions &mdash; Sci-bot Challenge v1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+    <link rel="canonical" href="https://ronang101.github.io/Sci-bot/challenges_solutions.html" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=5cb08e4e"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Further Development" href="Further_development.html" />
+    <link rel="prev" title="Technical Documentation" href="technical.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Sci-bot Challenge
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="project_overview.html">Project Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="technical.html">Technical Documentation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Challenges and Solutions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#utilizing-pre-trained-models">Utilizing Pre-trained Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#keyword-retrieval-challenges">Keyword Retrieval Challenges</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#handling-information-overload-from-wikipedia">Handling Information Overload from Wikipedia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#time-management-in-a-time-constrained-environment">Time Management in a Time-constrained Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dynamic-information-retrieval-for-a-broad-question-domain">Dynamic Information Retrieval for a Broad Question Domain</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Further_development.html">Further Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example.html">Example Interactions with Sci-bot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">Modules</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Sci-bot Challenge</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Challenges and Solutions</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/challenges_solutions.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="challenges-and-solutions">
+<h1>Challenges and Solutions<a class="headerlink" href="#challenges-and-solutions" title="Link to this heading"></a></h1>
+<section id="utilizing-pre-trained-models">
+<h2>Utilizing Pre-trained Models<a class="headerlink" href="#utilizing-pre-trained-models" title="Link to this heading"></a></h2>
+<p>Challenge: Given the constraint of a 24-hour development window, there was insufficient time to fine-tune a SciBERT model specifically tailored to the application’s domain of science-related questions. Fine-tuning such a model requires extensive computational resources and time for training on domain-specific datasets.</p>
+<p>Solution: To mitigate this, I opted to use a pre-trained model, “bert-large-uncased-whole-word-masking-finetuned-squad”. This model, fine-tuned on the SQuAD dataset, is optimized for question-answering tasks and has a strong understanding of natural language context. While not science-specific, its robust training on a diverse set of texts allowed me to leverage its capabilities for the science-focused application.</p>
+</section>
+<section id="keyword-retrieval-challenges">
+<h2>Keyword Retrieval Challenges<a class="headerlink" href="#keyword-retrieval-challenges" title="Link to this heading"></a></h2>
+<p>Challenge: Extracting the most relevant keywords from user queries posed a significant challenge. Relying on a single method for keyword extraction could lead to missing out on crucial terms or retrieving a noisy set of keywords.</p>
+<p>Solution: To enhance the keyword retrieval process, I integrated both YAKE and spaCy. YAKE provided a statistical approach to keyword extraction, identifying key phrases based on their occurrence and co-occurrence in the text. spaCy complemented this with linguistic-based extraction, utilizing part-of-speech tagging and named entity recognition to capture essential nouns and entities. The combination of these methods resulted in a richer and more accurate set of keywords for subsequent information retrieval.</p>
+</section>
+<section id="handling-information-overload-from-wikipedia">
+<h2>Handling Information Overload from Wikipedia<a class="headerlink" href="#handling-information-overload-from-wikipedia" title="Link to this heading"></a></h2>
+<p>Challenge: Wikipedia articles often contain a vast amount of information, which could overwhelm the model due to token limitations and dilute the relevance of the retrieved content.</p>
+<p>Solution: To address this, I implemented a sentence scoring mechanism that ranks sentences based on the presence and frequency of the extracted keywords. This allowed me to distill the content down to the most relevant sentences, ensuring that the information passed to the model was within token limits and focused on the user’s query.</p>
+</section>
+<section id="time-management-in-a-time-constrained-environment">
+<h2>Time Management in a Time-constrained Environment<a class="headerlink" href="#time-management-in-a-time-constrained-environment" title="Link to this heading"></a></h2>
+<p>Challenge: The 24-hour challenge required efficient time management, particularly in understanding and utilizing complex technologies like BERT, YAKE, and spaCy.</p>
+<p>Solution: Prioritization was key to my approach. I focused on grasping the core functionalities of these technologies, ensuring that I could implement them effectively within the chatbot, I also went on to learn how BERT and GPT models are trained and cna be further trained. This approach allowed me to build a robust system and learn about each technology.</p>
+</section>
+<section id="dynamic-information-retrieval-for-a-broad-question-domain">
+<h2>Dynamic Information Retrieval for a Broad Question Domain<a class="headerlink" href="#dynamic-information-retrieval-for-a-broad-question-domain" title="Link to this heading"></a></h2>
+<p>Challenge: To accommodate the wide range of potential science questions, creating a static knowledge base was infeasible. Additionally, I needed a solution that was cost-effective and reliable, with extensive coverage of various topics.</p>
+<p>Solution: I turned to dynamic information retrieval from Wikipedia and DBpedia, which offer comprehensive and up-to-date content across all scientific domains. These sources provided free access to a wealth of information, which the chatbot could tap into in real-time to retrieve and present the most relevant data to users’ inquiries.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="technical.html" class="btn btn-neutral float-left" title="Technical Documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Further_development.html" class="btn btn-neutral float-right" title="Further Development" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Ronan Geraghty.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

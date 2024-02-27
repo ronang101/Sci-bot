@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Further Development &mdash; Sci-bot Challenge v1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+    <link rel="canonical" href="https://ronang101.github.io/Sci-bot/Further_development.html" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=5cb08e4e"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Example Interactions with Sci-bot" href="example.html" />
+    <link rel="prev" title="Challenges and Solutions" href="challenges_solutions.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Sci-bot Challenge
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="project_overview.html">Project Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="technical.html">Technical Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="challenges_solutions.html">Challenges and Solutions</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Further Development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#optimization-of-the-scoring-mechanism">Optimization of the Scoring Mechanism</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#model-enhancement">Model Enhancement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sensitivity-to-question-phrasing">Sensitivity to Question Phrasing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#diverse-data-sources-and-error-handling">Diverse Data Sources and Error Handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#user-interaction-and-interface">User Interaction and Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#scalability-and-performance">Scalability and Performance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#conclusion">Conclusion</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="example.html">Example Interactions with Sci-bot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">Modules</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Sci-bot Challenge</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Further Development</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Further_development.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="further-development">
+<h1>Further Development<a class="headerlink" href="#further-development" title="Link to this heading"></a></h1>
+<section id="optimization-of-the-scoring-mechanism">
+<h2>Optimization of the Scoring Mechanism<a class="headerlink" href="#optimization-of-the-scoring-mechanism" title="Link to this heading"></a></h2>
+<p>Current Status: Sci-bot’s scoring mechanism, which is central to selecting the most relevant sentences from extensive texts, is grounded in keyword matching and lemmatization. Lemmatization converts words to their base or dictionary form, enhancing the match potential—for instance, “weight” becomes “weigh”. This process increases the likelihood of identifying sentences that contain different forms of the keywords.</p>
+<p>Challenge: Despite its utility, the current scoring mechanism has its limitations. It may not always capture the intended context, especially when dealing with synonyms or phrases that convey the same meaning but use different wording. For example, a user’s query about how “high” a flower grows might miss the relevant information if the source text mentions how “tall” the flower grows, and the scoring mechanism fails to recognize “high” and “tall” as synonyms.</p>
+<p>Future Goals:</p>
+<ul class="simple">
+<li><p>Synonym Recognition: One area for improvement is the incorporation of a thesaurus or synonym database to bridge the gap between different wordings of similar concepts. The initial attempts at integrating synonyms by using NLTK led to a decrease in precision, suggesting that the approach requires a more refined strategy.</p></li>
+<li><p>Contextual Understanding: Beyond individual words, I aim to enhance the bot’s ability to understand the context of sentences, allowing for a more nuanced selection of relevant information. I did attempt this also but it lead to very long processing times so again this requires further thought.</p></li>
+<li><p>Machine Learning for Relevance Scoring: Machine learning models could be trained to predict the relevance of sentences to a given query more effectively, taking into account a wider range of linguistic features beyond keyword matching.</p></li>
+</ul>
+</section>
+<section id="model-enhancement">
+<h2>Model Enhancement<a class="headerlink" href="#model-enhancement" title="Link to this heading"></a></h2>
+<p>Current Status: Sci-bot’s current iteration leverages the model “bert-large-uncased-whole-word-masking-finetuned-squad”, a BERT variant trained on the SQuAD dataset. This model, while not specialized in the scientific domain, provides a solid baseline for general question-answering tasks due to its broad language comprehension.</p>
+<p>Challenge: The primary challenge lies in bridging the gap between general language processing and the specific jargon and concepts found in scientific literature. The BERT model used is adept at handling a wide variety of questions but may not be as precise when it comes to the nuances of scientific terminology and data interpretation.</p>
+<p>Future Goals:</p>
+<ul class="simple">
+<li><p>Training within SciBERT Framework: Train a model within the SciBERT framework using SQuAD data to more accurately cater to science-related queries.</p></li>
+<li><p>Improving Chatbot Performance: Utilize SciBERT’s pre-training on scientific literature and fine-tuned question-answering capabilities from SQuAD to enhance the chatbot’s performance in the scientific domain.</p></li>
+<li><p>Maintaining Versatility of BERT: Aim to maintain the versatility of BERT while introducing a level of specificity that enhances the bot’s understanding of and responses to science-based questions.</p></li>
+</ul>
+</section>
+<section id="sensitivity-to-question-phrasing">
+<h2>Sensitivity to Question Phrasing<a class="headerlink" href="#sensitivity-to-question-phrasing" title="Link to this heading"></a></h2>
+<p>Current Status: Sci-bot is proficient in answering a diverse range of questions but is sensitive to the specific phrasing of user queries. This sensitivity can affect the accuracy of responses, as the system’s reliance on keyword detection and contextual information retrieval might not fully grasp the essence of the question when phrased differently.</p>
+<p>Challenge: The key challenge is to develop a more nuanced understanding of user intent and the semantic relationships between different phrasings. Current keyword-based approaches may falter when faced with synonyms, idiomatic expressions, or varied sentence structures that convey similar meanings.</p>
+<p>Future Goals:</p>
+<ul class="simple">
+<li><p>Enhancing Robustness to Variations in Question Phrasing: Develop the chatbot to be more resilient to variations in question phrasing, requiring the integration of advanced natural language processing techniques.</p></li>
+<li><p>Improved User Input Parsing: Implement techniques to parse user input more effectively, enabling the chatbot to better understand the nuances of different questions.</p></li>
+<li><p>Enhanced Contextual Understanding: Enhance the chatbot’s ability to understand context with greater depth, allowing for more accurate responses tailored to the specific user query.</p></li>
+<li><p>Recognizing User Intent with Higher Precision: Incorporate methods for recognizing user intent with higher precision, potentially through the training of custom machine learning models capable of discerning intent regardless of phrasing.</p></li>
+<li><p>Transition to Language Nuance Understanding: Evolve Sci-bot from a keyword-dependent chatbot to an AI with a sophisticated grasp of language nuances, marking a significant advancement in its capabilities.</p></li>
+</ul>
+</section>
+<section id="diverse-data-sources-and-error-handling">
+<h2>Diverse Data Sources and Error Handling<a class="headerlink" href="#diverse-data-sources-and-error-handling" title="Link to this heading"></a></h2>
+<p>Current Status: Sci-bot primarily uses Wikipedia and DBpedia as its data sources, which, while comprehensive, may not cover the entire spectrum of scientific knowledge. The current error handling strategy is basic and may not effectively guide users when their queries fall outside the chatbot’s existing knowledge base.</p>
+<p>Challenge: The challenge lies in expanding the chatbot’s repository of information to encompass more specialized and emerging scientific fields. Additionally, the current error handling mechanism needs to be more robust to handle a variety of edge cases and out-of-scope queries effectively.</p>
+<p>Future Goals:</p>
+<ul class="simple">
+<li><p>Expand Data Sources: To incorporate more diverse and specialized data sources that can enrich the chatbot’s knowledge base and provide users with a wide array of perspectives on scientific topics.</p></li>
+<li><p>Enhanced Error Handling: To develop sophisticated error handling that can gracefully respond to and manage a broader range of user queries, including those that may not be directly answerable by the chatbot.</p></li>
+<li><p>User Feedback Loop: To implement a feedback mechanism that allows users to contribute to the chatbot’s learning process by flagging unsatisfactory answers, which will be invaluable for ongoing improvement.</p></li>
+</ul>
+</section>
+<section id="user-interaction-and-interface">
+<h2>User Interaction and Interface<a class="headerlink" href="#user-interaction-and-interface" title="Link to this heading"></a></h2>
+<p>Current Status: The chatbot’s current interface is functional, providing users with direct answers to their questions. However, it lacks interactive elements that could engage users in a more dynamic learning experience.</p>
+<p>Challenge: To evolve the chatbot from a simple question-and-answer format to an interactive learning tool that can engage users in a dialogue, test their understanding, and adapt to their learning styles.</p>
+<p>Future Goals:</p>
+<ul class="simple">
+<li><p>Interactive Learning Sessions: To introduce interactive learning modules that engage users in dialogues, providing a more immersive educational experience.</p></li>
+<li><p>Personalization: To develop a system that can tailor responses and learning paths based on individual user profiles, preferences, and past interactions.</p></li>
+</ul>
+</section>
+<section id="scalability-and-performance">
+<h2>Scalability and Performance<a class="headerlink" href="#scalability-and-performance" title="Link to this heading"></a></h2>
+<p>Current Status: The current infrastructure may struggle to maintain performance with more data sources or if ever used by many users at once, potentially leading to longer response times or decreased reliability.</p>
+<p>Challenge: The chatbot needs to be scalable to accommodate a growing number of users if this bot was ever to be taken further while maintaining high performance and quick response times.</p>
+<p>Future Goals:</p>
+<ul class="simple">
+<li><p>Scalability: To optimize the chatbot’s architecture to efficiently handle an increased volume of user interactions simultaneously.</p></li>
+<li><p>Performance Monitoring: To implement a comprehensive monitoring framework that tracks performance metrics and user satisfaction, using this data to continuously refine the chatbot’s performance.</p></li>
+</ul>
+</section>
+<section id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading"></a></h2>
+<p>By addressing these challenges, I hope to significantly enhance the chatbot’s ability to understand and retrieve information that accurately addresses user queries, even when faced with variations in terminology and phrasing.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="challenges_solutions.html" class="btn btn-neutral float-left" title="Challenges and Solutions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="example.html" class="btn btn-neutral float-right" title="Example Interactions with Sci-bot" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Ronan Geraghty.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

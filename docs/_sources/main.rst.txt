@@ -1,0 +1,13 @@
+main package
+============
+
+Submodules
+----------
+
+main.chatbot\_startup module
+----------------------------
+
+.. automodule:: main.chatbot_startup
+   :members:
+   :undoc-members:
+   :show-inheritance:

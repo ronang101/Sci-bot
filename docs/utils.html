@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>utils package &mdash; Sci-bot Challenge v1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+    <link rel="canonical" href="https://ronang101.github.io/Sci-bot/utils.html" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=5cb08e4e"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="processing package" href="processing.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Sci-bot Challenge
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="project_overview.html">Project Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="technical.html">Technical Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="challenges_solutions.html">Challenges and Solutions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Further_development.html">Further Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example.html">Example Interactions with Sci-bot</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">Modules</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="interaction_messages.html">interaction_messages package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="main.html">main package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="processing.html">processing package</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">utils package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-utils.utils">utils.utils module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#utils.utils.clean_keyword"><code class="docutils literal notranslate"><span class="pre">clean_keyword()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#utils.utils.format_question"><code class="docutils literal notranslate"><span class="pre">format_question()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#utils.utils.lemmatize_keywords"><code class="docutils literal notranslate"><span class="pre">lemmatize_keywords()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#utils.utils.merge_and_boost_keywords"><code class="docutils literal notranslate"><span class="pre">merge_and_boost_keywords()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#utils.utils.prioritize_compound_terms"><code class="docutils literal notranslate"><span class="pre">prioritize_compound_terms()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#utils.utils.score_sentences"><code class="docutils literal notranslate"><span class="pre">score_sentences()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#utils.utils.split_compound_keywords"><code class="docutils literal notranslate"><span class="pre">split_compound_keywords()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#utils.utils.validate_question"><code class="docutils literal notranslate"><span class="pre">validate_question()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Sci-bot Challenge</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">Modules</a></li>
+      <li class="breadcrumb-item active">utils package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/utils.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="utils-package">
+<h1>utils package<a class="headerlink" href="#utils-package" title="Link to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+</section>
+<section id="module-utils.utils">
+<span id="utils-utils-module"></span><h2>utils.utils module<a class="headerlink" href="#module-utils.utils" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.utils.clean_keyword">
+<span class="sig-prename descclassname"><span class="pre">utils.utils.</span></span><span class="sig-name descname"><span class="pre">clean_keyword</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keyword</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stopwords</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.utils.clean_keyword" title="Link to this definition"></a></dt>
+<dd><p>Removes stopwords from a keyword phrase, refining it for better processing.</p>
+<p>This function takes a keyword phrase and a list of stopwords, then
+filters out any word within the keyword phrase that is also found
+in the stopwords list. Stopwords are common words that usually have
+little value in the context of search and analysis because they occur
+frequently across all types of texts (e.g., “the”, “is”, “at”). Removing
+these words from keyword phrases can help improve the relevance and
+focus of search queries and natural language processing tasks, making it a
+crucial step in refining user queries for information retrieval or
+enhancing the quality of keywords extracted for processing in a chatbot
+application.</p>
+<p>Parameters:</p>
+<ul class="simple">
+<li><p>keyword (str): The keyword phrase to be cleaned.</p></li>
+<li><p>stopwords (set of str): A set of stopwords to filter out from the
+keyword phrase.</p></li>
+</ul>
+<p>Returns:</p>
+<ul class="simple">
+<li><p>str: A refined keyword phrase with stopwords removed.</p></li>
+</ul>
+<p>Example:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">clean_keyword</span><span class="p">(</span><span class="s2">&quot;what is the boiling point&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;is&quot;</span><span class="p">,</span> <span class="s2">&quot;the&quot;</span><span class="p">})</span>
+<span class="go">    &quot;boiling point&quot;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.utils.format_question">
+<span class="sig-prename descclassname"><span class="pre">utils.utils.</span></span><span class="sig-name descname"><span class="pre">format_question</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">question</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.utils.format_question" title="Link to this definition"></a></dt>
+<dd><p>Formats a question by trimming leading/trailing whitespace and ensuring it ends with a question mark.</p>
+<p>Parameters:</p>
+<ul class="simple">
+<li><p>question (str): The user’s input question.</p></li>
+</ul>
+<p>Returns:</p>
+<ul class="simple">
+<li><p>str: The formatted question.</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.utils.lemmatize_keywords">
+<span class="sig-prename descclassname"><span class="pre">utils.utils.</span></span><span class="sig-name descname"><span class="pre">lemmatize_keywords</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keywords</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.utils.lemmatize_keywords" title="Link to this definition"></a></dt>
+<dd><p>Converts each keyword in the given list to its base or dictionary form
+(lemma).</p>
+<p>Lemmatization is a process of reducing a word to its base form,
+lemmatization considers the context of a word while doing this.
+This function is particularly useful in natural language
+processing applications where the goal is to analyze or compare
+words at their root level. It helps in standardizing words to
+their root form, which is essential for processes like keyword
+extraction, search, and information retrieval in a chatbot application.</p>
+<p>Parameters:</p>
+<ul class="simple">
+<li><p>keywords (list of str): A list of keywords to be lemmatized.</p></li>
+</ul>
+<p>Returns:</p>
+<ul class="simple">
+<li><p>list of str: A list containing the lemmatized form of the input keywords.</p></li>
+</ul>
+<p>Example:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">lemmatize_keywords</span><span class="p">([</span><span class="s2">&quot;running&quot;</span><span class="p">,</span> <span class="s2">&quot;leaves&quot;</span><span class="p">])</span>
+<span class="go">    [&quot;run&quot;, &quot;leaf&quot;]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.utils.merge_and_boost_keywords">
+<span class="sig-prename descclassname"><span class="pre">utils.utils.</span></span><span class="sig-name descname"><span class="pre">merge_and_boost_keywords</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">yake_keywords</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spacy_keywords</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.utils.merge_and_boost_keywords" title="Link to this definition"></a></dt>
+<dd><p>Merges keywords extracted by YAKE and spaCy, boosting shared keywords.</p>
+<p>This function takes two lists of keywords
+extracted by different methods (YAKE and spaCy)
+and merges them while giving priority to
+shared keywords. Shared keywords are placed at the
+beginning of the merged list, effectively
+“boosting” their importance. This strategy is
+beneficial in information retrieval and
+natural language processing as it emphasizes keywords
+that are deemed significant by both extraction
+methods, potentially leading to more relevant
+and accurate search results or analysis outcomes
+in the context of a chatbot application.</p>
+<p>Parameters:</p>
+<ul class="simple">
+<li><p>yake_keywords (list of str): Keywords extracted by the YAKE method.</p></li>
+<li><p>spacy_keywords (list of str): Keywords extracted by spaCy.</p></li>
+</ul>
+<p>Returns:</p>
+<ul class="simple">
+<li><p>list of str: A merged and boosted list of unique keywords.</p></li>
+</ul>
+<p>Example:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">merge_and_boost_keywords</span><span class="p">([</span><span class="s2">&quot;climate change&quot;</span><span class="p">,</span> <span class="s2">&quot;global warming&quot;</span><span class="p">],</span>
+<span class="go">    [&quot;climate change&quot;, &quot;environment&quot;])</span>
+<span class="go">    [&quot;climate change&quot;, &quot;global warming&quot;, &quot;environment&quot;]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.utils.prioritize_compound_terms">
+<span class="sig-prename descclassname"><span class="pre">utils.utils.</span></span><span class="sig-name descname"><span class="pre">prioritize_compound_terms</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keywords</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">original_text</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.utils.prioritize_compound_terms" title="Link to this definition"></a></dt>
+<dd><p>Prioritizes compound terms (phrases) found in
+the extracted keywords by YAKE, ensuring
+they appear at the beginning of the list.
+This is based on their presence in the original
+text, under the assumption that compound
+terms often carry more specific or nuanced meaning
+than individual words. This method improves the
+relevance of keyword-based searches or analyses
+by highlighting phrases that are likely to be
+more significant in the context of the text.</p>
+<p>Parameters:</p>
+<ul class="simple">
+<li><p>keywords (list of str): Keywords extracted by YAKE and spaCy
+compound terms (phrases) and single terms.</p></li>
+<li><p>original_text (str): The original text from which the keywords were
+extracted.</p></li>
+</ul>
+<p>Returns:</p>
+<ul class="simple">
+<li><p>list of str: A list of keywords with compound terms prioritized at the
+start.</p></li>
+</ul>
+<p>Example:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">prioritize_compound_terms</span><span class="p">([</span><span class="s2">&quot;climate change&quot;</span><span class="p">,</span> <span class="s2">&quot;climate&quot;</span><span class="p">,</span> <span class="s2">&quot;change&quot;</span><span class="p">],</span>
+<span class="go">    &quot;The impact of climate change is significant.&quot;)</span>
+<span class="go">    [&quot;climate change&quot;, &quot;climate&quot;, &quot;change&quot;]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.utils.score_sentences">
+<span class="sig-prename descclassname"><span class="pre">utils.utils.</span></span><span class="sig-name descname"><span class="pre">score_sentences</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">page_text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keywords</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.utils.score_sentences" title="Link to this definition"></a></dt>
+<dd><p>Scores sentences in a given text based on the
+presence and frequency of specified keywords.
+This function is useful for extracting
+relevant sentences from a large text
+based on keyword relevance. It  splits compound
+keywords into individual words
+lemmatizes the keywords to match their base
+forms in sentences, and scores each sentence by
+the number of keyword matches. The sentences
+are then sorted by their scores, and the
+top-scoring sentences are returned, providing
+a concise summary or response based on the keywords.</p>
+<p>Parameters:</p>
+<ul class="simple">
+<li><p>page_text (str): The text from which
+sentences will be scored and extracted.</p></li>
+<li><p>keywords (list of str): A list of
+keywords used to score the sentences.</p></li>
+</ul>
+<p>Returns:</p>
+<ul class="simple">
+<li><p>str: A string composed of the top-scoring sentences, concatenated
+together.</p></li>
+</ul>
+<p>Example:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">score_sentences</span><span class="p">(</span><span class="s2">&quot;Climate change affects all. It leads to higher</span>
+<span class="go">    temperatures.&quot;, [&quot;climate change&quot;, &quot;temperatures&quot;])</span>
+<span class="go">    &quot;Climate change affects all. It leads to higher temperatures.&quot;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.utils.split_compound_keywords">
+<span class="sig-prename descclassname"><span class="pre">utils.utils.</span></span><span class="sig-name descname"><span class="pre">split_compound_keywords</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keywords</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.utils.split_compound_keywords" title="Link to this definition"></a></dt>
+<dd><p>Splits compound keywords into individual words, filtering out duplicates.</p>
+<p>This function is designed to decompose
+compound keywords into their individual words.
+This is particularly useful in text analysis
+and natural language processing where
+compound keywords might not be recognized
+as a single entity by search or analysis algorithms.
+By breaking down these compounds, the
+function increases the likelihood of matching
+individual words in the context,
+enhancing the chatbot’s ability to retrieve
+relevant information based on more granular keyword searches.</p>
+<p>Parameters:</p>
+<ul class="simple">
+<li><p>keywords (list of str): A list of compound keywords to be split.</p></li>
+</ul>
+<p>Returns:</p>
+<ul class="simple">
+<li><p>list of str: A list of unique individual words obtained
+from splitting the compound keywords.</p></li>
+</ul>
+<p>Example:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">split_compound_keywords</span><span class="p">([</span><span class="s2">&quot;climate change&quot;</span><span class="p">,</span> <span class="s2">&quot;carbon footprint&quot;</span><span class="p">])</span>
+<span class="go">    [&quot;climate&quot;, &quot;change&quot;, &quot;carbon&quot;, &quot;footprint&quot;]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.utils.validate_question">
+<span class="sig-prename descclassname"><span class="pre">utils.utils.</span></span><span class="sig-name descname"><span class="pre">validate_question</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">question</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.utils.validate_question" title="Link to this definition"></a></dt>
+<dd><p>Validates the user’s question based on specific
+criteria to ensure it is in an acceptable format
+for the chatbot to process. This validation includes
+checking the question’s length and ensuring
+it begins with certain keywords that typically
+start informational queries. Such validation helps
+maintain the quality of interaction between the
+user and the chatbot, guiding users to phrase their
+questions in a manner that maximizes the likelihood
+of receiving a relevant and accurate response.</p>
+<p>Parameters:</p>
+<ul class="simple">
+<li><p>question (str): The user’s question to be validated.</p></li>
+</ul>
+<p>Returns:</p>
+<ul class="simple">
+<li><p>bool: True if the question meets the validation criteria,
+False otherwise.</p></li>
+</ul>
+<p>The function informs the user of specific reasons
+why their question might be invalid, such as
+exceeding character limits or not starting with an
+approved keyword, and suggests corrections.</p>
+<p>Example:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">validate_question</span><span class="p">(</span><span class="s2">&quot;Why is the sky blue?&quot;</span><span class="p">)</span>
+<span class="go">    True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">validate_question</span><span class="p">(</span><span class="s2">&quot;Sky blue why?&quot;</span><span class="p">)</span>
+<span class="go">    &quot;Please start your question with one of the</span>
+<span class="go">    following words: what, why,</span>
+<span class="go">    when, where, explain, define, how, who.&quot;</span>
+<span class="go">    False</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="processing.html" class="btn btn-neutral float-left" title="processing package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Ronan Geraghty.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

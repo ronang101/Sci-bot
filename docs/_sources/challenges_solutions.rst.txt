@@ -1,0 +1,37 @@
+Challenges and Solutions
+========================
+
+Utilizing Pre-trained Models
+-----------------------------
+
+Challenge: Given the constraint of a 24-hour development window, there was insufficient time to fine-tune a SciBERT model specifically tailored to the application's domain of science-related questions. Fine-tuning such a model requires extensive computational resources and time for training on domain-specific datasets.
+
+Solution: To mitigate this, I opted to use a pre-trained model, "bert-large-uncased-whole-word-masking-finetuned-squad". This model, fine-tuned on the SQuAD dataset, is optimized for question-answering tasks and has a strong understanding of natural language context. While not science-specific, its robust training on a diverse set of texts allowed me to leverage its capabilities for the science-focused application.
+
+Keyword Retrieval Challenges
+----------------------------
+
+Challenge: Extracting the most relevant keywords from user queries posed a significant challenge. Relying on a single method for keyword extraction could lead to missing out on crucial terms or retrieving a noisy set of keywords.
+
+Solution: To enhance the keyword retrieval process, I integrated both YAKE and spaCy. YAKE provided a statistical approach to keyword extraction, identifying key phrases based on their occurrence and co-occurrence in the text. spaCy complemented this with linguistic-based extraction, utilizing part-of-speech tagging and named entity recognition to capture essential nouns and entities. The combination of these methods resulted in a richer and more accurate set of keywords for subsequent information retrieval.
+
+Handling Information Overload from Wikipedia
+--------------------------------------------
+
+Challenge: Wikipedia articles often contain a vast amount of information, which could overwhelm the model due to token limitations and dilute the relevance of the retrieved content.
+
+Solution: To address this, I implemented a sentence scoring mechanism that ranks sentences based on the presence and frequency of the extracted keywords. This allowed me to distill the content down to the most relevant sentences, ensuring that the information passed to the model was within token limits and focused on the user's query.
+
+Time Management in a Time-constrained Environment
+---------------------------------------------------
+
+Challenge: The 24-hour challenge required efficient time management, particularly in understanding and utilizing complex technologies like BERT, YAKE, and spaCy.
+
+Solution: Prioritization was key to my approach. I focused on grasping the core functionalities of these technologies, ensuring that I could implement them effectively within the chatbot, I also went on to learn how BERT and GPT models are trained and cna be further trained. This approach allowed me to build a robust system and learn about each technology.
+
+Dynamic Information Retrieval for a Broad Question Domain
+----------------------------------------------------------
+
+Challenge: To accommodate the wide range of potential science questions, creating a static knowledge base was infeasible. Additionally, I needed a solution that was cost-effective and reliable, with extensive coverage of various topics.
+
+Solution: I turned to dynamic information retrieval from Wikipedia and DBpedia, which offer comprehensive and up-to-date content across all scientific domains. These sources provided free access to a wealth of information, which the chatbot could tap into in real-time to retrieve and present the most relevant data to users' inquiries.

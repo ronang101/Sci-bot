@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>processing package &mdash; Sci-bot Challenge v1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+    <link rel="canonical" href="https://ronang101.github.io/Sci-bot/processing.html" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=5cb08e4e"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="utils package" href="utils.html" />
+    <link rel="prev" title="main package" href="main.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Sci-bot Challenge
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="project_overview.html">Project Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="technical.html">Technical Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="challenges_solutions.html">Challenges and Solutions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Further_development.html">Further Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example.html">Example Interactions with Sci-bot</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">Modules</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="interaction_messages.html">interaction_messages package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="main.html">main package</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">processing package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-processing.context_retrival">processing.context_retrival module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#processing.context_retrival.fetch_and_process_dbpedia"><code class="docutils literal notranslate"><span class="pre">fetch_and_process_dbpedia()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#processing.context_retrival.fetch_and_process_wikipedia"><code class="docutils literal notranslate"><span class="pre">fetch_and_process_wikipedia()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#processing.context_retrival.fetch_context_for_keyword"><code class="docutils literal notranslate"><span class="pre">fetch_context_for_keyword()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#processing.context_retrival.fetch_from_dbpedia"><code class="docutils literal notranslate"><span class="pre">fetch_from_dbpedia()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#processing.context_retrival.get_wikipedia_page_content"><code class="docutils literal notranslate"><span class="pre">get_wikipedia_page_content()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#processing.context_retrival.search_and_evaluate_answers"><code class="docutils literal notranslate"><span class="pre">search_and_evaluate_answers()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-processing.keyword_extraction">processing.keyword_extraction module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#processing.keyword_extraction.extract_and_process_keywords"><code class="docutils literal notranslate"><span class="pre">extract_and_process_keywords()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#processing.keyword_extraction.extract_keywords"><code class="docutils literal notranslate"><span class="pre">extract_keywords()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#processing.keyword_extraction.extract_nouns_and_entities"><code class="docutils literal notranslate"><span class="pre">extract_nouns_and_entities()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-processing.question_answering_logic">processing.question_answering_logic module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#processing.question_answering_logic.answer_question_with_scibert"><code class="docutils literal notranslate"><span class="pre">answer_question_with_scibert()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#processing.question_answering_logic.get_confidence"><code class="docutils literal notranslate"><span class="pre">get_confidence()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html">utils package</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Sci-bot Challenge</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">Modules</a></li>
+      <li class="breadcrumb-item active">processing package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/processing.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="processing-package">
+<h1>processing package<a class="headerlink" href="#processing-package" title="Link to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+</section>
+<section id="module-processing.context_retrival">
+<span id="processing-context-retrival-module"></span><h2>processing.context_retrival module<a class="headerlink" href="#module-processing.context_retrival" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="processing.context_retrival.fetch_and_process_dbpedia">
+<span class="sig-prename descclassname"><span class="pre">processing.context_retrival.</span></span><span class="sig-name descname"><span class="pre">fetch_and_process_dbpedia</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">search_term</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">question</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keywords</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#processing.context_retrival.fetch_and_process_dbpedia" title="Link to this definition"></a></dt>
+<dd><p>Fetches a brief description from DBpedia for a given
+search term and processes it to answer a question.
+This function leverages the structured data available
+in DBpedia to obtain concise descriptions,
+which are then scored and used to generate an answer
+to the question using the SciBERT model.
+It aims to utilize semantic web data to enhance the
+chatbot’s ability to provide informative responses.</p>
+<p>Parameters:</p>
+<ul class="simple">
+<li><p>search_term (str): The term for which information is sought from DBpedia.</p></li>
+<li><p>question (str): The user’s question that needs answering.</p></li>
+<li><p>keywords (list of str): Keywords extracted from the question to aid in
+scoring sentence relevance.</p></li>
+</ul>
+<p>Returns:</p>
+<ul class="simple">
+<li><p>tuple: A tuple containing the answer string and its confidence score,
+or (None, 0) if no relevant context is found.</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="processing.context_retrival.fetch_and_process_wikipedia">
+<span class="sig-prename descclassname"><span class="pre">processing.context_retrival.</span></span><span class="sig-name descname"><span class="pre">fetch_and_process_wikipedia</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">search_term</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">question</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keywords</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#processing.context_retrival.fetch_and_process_wikipedia" title="Link to this definition"></a></dt>
+<dd><p>Retrieves and processes content from a Wikipedia page
+matching a given search term to answer a question.
+This function fetches relevant Wikipedia content
+based on the search term, then uses the content to
+generate an answer to the question using the SciBERT
+model. It demonstrates the application’s ability
+to integrate real-time web data for generating
+responses, enhancing the user experience by providing
+accurate and contextually relevant answers.</p>
+<p>Parameters:</p>
+<ul class="simple">
+<li><p>search_term (str): The term for which Wikipedia content is sought.</p></li>
+<li><p>question (str): The user’s question that needs answering.</p></li>
+<li><p>keywords (list of str): Keywords extracted from the question to aid in
+scoring sentence relevance.</p></li>
+</ul>
+<p>Returns:</p>
+<ul class="simple">
+<li><p>tuple: A tuple containing the answer string and its confidence score,
+or (None, 0) if no relevant context is found.</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="processing.context_retrival.fetch_context_for_keyword">
+<span class="sig-prename descclassname"><span class="pre">processing.context_retrival.</span></span><span class="sig-name descname"><span class="pre">fetch_context_for_keyword</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">result</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">additional_key_words</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#processing.context_retrival.fetch_context_for_keyword" title="Link to this definition"></a></dt>
+<dd><p>Attempts to fetch and process relevant context
+for a given keyword by querying Wikipedia.
+This function first retrieves the content of a
+Wikipedia page corresponding to the keyword (result).
+It then scores sentences within this content
+based on their relevance to additional keywords,
+selecting sentences that best match the query.
+This method is useful in this application for
+providing contextually relevant information
+based on user queries is essential.</p>
+<p>Parameters:</p>
+<ul class="simple">
+<li><p>result (str): The keyword or title of the
+Wikipedia page to fetch content for.</p></li>
+<li><p>additional_key_words (list of str): Additional
+keywords used to score and filter the content for relevance.</p></li>
+</ul>
+<p>Returns:</p>
+<ul class="simple">
+<li><p>str: A string composed of relevant sentences extracted from the
+Wikipedia page content, or an empty string if no
+relevant content could be found or an error occurred.</p></li>
+</ul>
+<p>Exceptions:</p>
+<ul class="simple">
+<li><p>Logs an error message if fetching content or processing fails.</p></li>
+</ul>
+<p>Example:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fetch_context_for_keyword</span><span class="p">(</span><span class="s2">&quot;Climate change&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;global warming&quot;</span><span class="p">,</span>
+<span class="go">    &quot;effects&quot;])</span>
+<span class="go">    &quot;Relevant sentence 1. Relevant sentence 2. ...&quot;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="processing.context_retrival.fetch_from_dbpedia">
+<span class="sig-prename descclassname"><span class="pre">processing.context_retrival.</span></span><span class="sig-name descname"><span class="pre">fetch_from_dbpedia</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keyword</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#processing.context_retrival.fetch_from_dbpedia" title="Link to this definition"></a></dt>
+<dd><p>Retrieves a brief description of a given keyword from DBpedia,
+utilizing SPARQL for querying.
+This function leverages the structured data available in
+DBpedia to provide concise explanations
+or descriptions based on Wikipedia content.
+Caching the results minimizes repetitive queries,
+enhancing performance for applications that
+require quick access to summarized information,
+such as chatbots or automated research tools.</p>
+<p>Parameters:</p>
+<ul class="simple">
+<li><p>keyword (str): The keyword for which a brief description is sought from
+DBpedia.</p></li>
+</ul>
+<p>Returns:</p>
+<ul class="simple">
+<li><p>str: A brief description of the keyword from DBpedia, or an empty string
+if no description was found.</p></li>
+</ul>
+<p>Exceptions:</p>
+<ul class="simple">
+<li><p>Does not explicitly handle exceptions but returns an empty string for no
+results, ensuring the application’s flow is not interrupted by missing
+data.</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="processing.context_retrival.get_wikipedia_page_content">
+<span class="sig-prename descclassname"><span class="pre">processing.context_retrival.</span></span><span class="sig-name descname"><span class="pre">get_wikipedia_page_content</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">page_title</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#processing.context_retrival.get_wikipedia_page_content" title="Link to this definition"></a></dt>
+<dd><p>Fetches the content of a Wikipedia page given its title,
+with caching to minimize API requests.
+This function is crucial for applications that rely
+on extracting up-to-date information from
+Wikipedia, such as chatbots or knowledge bases.
+By caching results, it also enhances performance
+and reduces the load on Wikipedia’s servers.</p>
+<p>Parameters:</p>
+<ul class="simple">
+<li><p>page_title (str): The title of the Wikipedia page to retrieve content
+for.</p></li>
+</ul>
+<p>Returns:</p>
+<ul class="simple">
+<li><p>str: The content of the Wikipedia page, or None if the page could not be
+found or another error occurred.</p></li>
+</ul>
+<p>Exceptions:</p>
+<ul class="simple">
+<li><p>Logs a message for disambiguation or page errors, indicating that the
+page content could not be retrieved.</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="processing.context_retrival.search_and_evaluate_answers">
+<span class="sig-prename descclassname"><span class="pre">processing.context_retrival.</span></span><span class="sig-name descname"><span class="pre">search_and_evaluate_answers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">question</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">accurate_keywords</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#processing.context_retrival.search_and_evaluate_answers" title="Link to this definition"></a></dt>
+<dd><p>Searches for answers to a given question using a set of
+accurate keywords and evaluates the confidence
+of the responses. This function iterates through
+Wikipedia search results for each keyword and attempts
+to fetch and process relevant information from
+both DBpedia and Wikipedia. Each potential answer is
+evaluated for its confidence level, and the first
+answer meeting the confidence threshold is returned.</p>
+<p>This method demonstrates an integrated approach to
+leveraging multiple data sources for enhancing the
+quality and relevance of chatbot responses, thereby
+improving the user experience by providing accurate
+and trustworthy information.</p>
+<p>Parameters:</p>
+<ul class="simple">
+<li><p>question (str): The question that needs an answer.</p></li>
+<li><p>accurate_keywords (list of str): Keywords identified
+as most relevant to the question.</p></li>
+</ul>
+<p>Returns:</p>
+<ul class="simple">
+<li><p>tuple: A tuple containing the answer and a boolean
+indicating success (True) or failure (False)
+to find a confident answer. Returns (None, False) if no satisfactory
+answer is found.</p></li>
+</ul>
+<p>Example:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">search_and_evaluate_answers</span><span class="p">(</span><span class="s2">&quot;What is the impact of climate change?&quot;</span><span class="p">,</span>
+<span class="go">    [&quot;climate change&quot;, &quot;impact&quot;])</span>
+<span class="go">    (&quot;Climate change leads to higher sea levels.&quot;, True)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+<section id="module-processing.keyword_extraction">
+<span id="processing-keyword-extraction-module"></span><h2>processing.keyword_extraction module<a class="headerlink" href="#module-processing.keyword_extraction" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="processing.keyword_extraction.extract_and_process_keywords">
+<span class="sig-prename descclassname"><span class="pre">processing.keyword_extraction.</span></span><span class="sig-name descname"><span class="pre">extract_and_process_keywords</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">question</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#processing.keyword_extraction.extract_and_process_keywords" title="Link to this definition"></a></dt>
+<dd><p>Extracts and processes keywords from a given question by
+utilizing both YAKE and spaCy for keyword extraction,
+then merging and prioritizing the results. This
+comprehensive approach leverages YAKE’s ability to identify
+key phrases based on statistical methods and spaCy’s
+linguistic insights for extracting nouns and named entities,
+ensuring a rich set of keywords. The process includes
+merging keywords from both methods, boosting shared keywords,
+and prioritizing compound terms, which collectively
+enhance the relevance and accuracy of the keywords for
+subsequent search or analysis tasks in applications such as chatbots.</p>
+<p>Parameters:</p>
+<ul class="simple">
+<li><p>question (str): The question from which keywords are to be extracted and
+processed.</p></li>
+</ul>
+<p>Returns:</p>
+<ul class="simple">
+<li><p>list of str: The top 7 processed and prioritized keywords extracted from
+the question.</p></li>
+</ul>
+<p>Example:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">extract_and_process_keywords</span><span class="p">(</span><span class="s2">&quot;What are the effects of climate change</span>
+<span class="go">    on polar bears?&quot;)</span>
+<span class="go">    [&quot;climate change&quot;, &quot;polar bears&quot;, &quot;effects&quot;]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="processing.keyword_extraction.extract_keywords">
+<span class="sig-prename descclassname"><span class="pre">processing.keyword_extraction.</span></span><span class="sig-name descname"><span class="pre">extract_keywords</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_keywords</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#processing.keyword_extraction.extract_keywords" title="Link to this definition"></a></dt>
+<dd><p>Extracts a specified (max) number of keywords from a
+given text using the YAKE keyword extraction algorithm.
+The function then filters these keywords by removing
+common and domain-specific stopwords to improve
+the relevance of the extracted keywords. This refined
+list of keywords can be used for various natural
+language processing tasks, such as enhancing search
+queries or guiding content analysis in a chatbot.</p>
+<p>Parameters:</p>
+<ul class="simple">
+<li><p>text (str): The text from which to extract keywords.</p></li>
+<li><p>num_keywords (int): The number of top keywords to
+return after extraction and filtering.</p></li>
+</ul>
+<p>Returns:</p>
+<ul class="simple">
+<li><p>list of str: A list of the top N filtered keywords extracted from the
+text.</p></li>
+</ul>
+<p>Example:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">extract_keywords</span><span class="p">(</span><span class="s2">&quot;Climate change is a global challenge that affects</span>
+<span class="go">    everyone everywhere.&quot;, 3)</span>
+<span class="go">    [&quot;climate change&quot;, &quot;global challenge&quot;, &quot;affects everyone&quot;]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="processing.keyword_extraction.extract_nouns_and_entities">
+<span class="sig-prename descclassname"><span class="pre">processing.keyword_extraction.</span></span><span class="sig-name descname"><span class="pre">extract_nouns_and_entities</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#processing.keyword_extraction.extract_nouns_and_entities" title="Link to this definition"></a></dt>
+<dd><p>Extracts nouns and named entities from a given text using spaCy,
+aiming to identify key subjects and concepts
+for broader search applicability, such as querying
+Wikipedia pages. Named entities are important as they represent
+specific objects that can be named - such as people,
+places, organizations - while nouns often capture the key
+themes or topics of the text. This dual extraction
+approach ensures a comprehensive set of keywords that can
+enhance information retrieval and analysis processes
+in applications like chatbots.</p>
+<p>Parameters:</p>
+<ul class="simple">
+<li><p>text (str): The text from which nouns and named entities are to be
+extracted.</p></li>
+</ul>
+<p>Returns:</p>
+<ul class="simple">
+<li><p>list of str: A list of unique nouns and named entities extracted from
+the text.</p></li>
+</ul>
+<p>Example:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">extract_nouns_and_entities</span><span class="p">(</span><span class="s2">&quot;Albert Einstein was a theoretical</span>
+<span class="go">    physicist.&quot;)</span>
+<span class="go">    [&quot;Albert Einstein&quot;, &quot;theoretical physicist&quot;]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+<section id="module-processing.question_answering_logic">
+<span id="processing-question-answering-logic-module"></span><h2>processing.question_answering_logic module<a class="headerlink" href="#module-processing.question_answering_logic" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="processing.question_answering_logic.answer_question_with_scibert">
+<span class="sig-prename descclassname"><span class="pre">processing.question_answering_logic.</span></span><span class="sig-name descname"><span class="pre">answer_question_with_scibert</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">question</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#processing.question_answering_logic.answer_question_with_scibert" title="Link to this definition"></a></dt>
+<dd><p>Generates an answer to a given question based on a
+provided context using the SciBERT model.
+SciBERT, a BERT model trained on scientific texts,
+is utilized here to understand and extract
+answers from context that is likely dense with
+scientific terminology. This function encapsulates
+the process of encoding the question and context,
+performing inference with SciBERT, and decoding
+the model’s prediction into a human-readable answer,
+along with computing a confidence score for
+the generated answer.</p>
+<p>Parameters:</p>
+<ul class="simple">
+<li><p>question (str): The question to be answered.</p></li>
+<li><p>context (str): The context or passage from which the answer should be
+derived.</p></li>
+</ul>
+<p>Returns:</p>
+<ul class="simple">
+<li><p>tuple: A tuple containing the extracted answer as a string and its
+confidence score as a float.
+Returns a default response with a confidence of 0 if no context is
+provided.</p></li>
+</ul>
+<p>Example:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">answer_question_with_scibert</span><span class="p">(</span><span class="s2">&quot;What causes climate change?&quot;</span><span class="p">,</span>
+<span class="go">    &quot;Climate change is caused by...&quot;)</span>
+<span class="go">    (&quot;Climate change is caused by...&quot;, 0.95)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="processing.question_answering_logic.get_confidence">
+<span class="sig-prename descclassname"><span class="pre">processing.question_answering_logic.</span></span><span class="sig-name descname"><span class="pre">get_confidence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">answer_start_scores</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">answer_end_scores</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#processing.question_answering_logic.get_confidence" title="Link to this definition"></a></dt>
+<dd><p>Calculates the confidence score of the answer produced by
+the BERT model by analyzing the start and end logits.
+This function converts logits to probabilities using the
+softmax function and determines the confidence score
+based on the highest probabilities for the answer’s
+start and end positions. The confidence score can be used
+to gauge the reliability of the answer, with higher
+scores indicating greater confidence in the model’s response.</p>
+<p>Parameters:</p>
+<ul class="simple">
+<li><p>answer_start_scores (torch.Tensor): The logits representing
+the model’s predictions for the start position of the answer.</p></li>
+<li><p>answer_end_scores (torch.Tensor): The logits representing the model’s
+predictions for the end position of the answer.</p></li>
+</ul>
+<p>Returns:</p>
+<ul class="simple">
+<li><p>float: The calculated confidence score for the model’s answer,
+averaged between the start and end positions.</p></li>
+</ul>
+<p>Example:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_confidence</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">]),</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span>
+<span class="go">    0.2, 0.3]))</span>
+<span class="go">    0.3</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="main.html" class="btn btn-neutral float-left" title="main package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="utils.html" class="btn btn-neutral float-right" title="utils package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Ronan Geraghty.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+Project Overview
+================
+
+Sci-bot Challenge
+-----------------
+The Sci-bot project is my attempt at taking on a 24-hour coding challenge, this challenge required the development of an NLP chatbot with a focus on answering science-related questions. This chatbot, named Sci-bot, is an AI-powered conversational agent designed to provide informative and accurate answers to a wide range of scientific inquiries.
+
+Objective
+---------
+The primary goal of Sci-bot is to demonstrate an understanding of natural language queries and to deliver responses that are not only correct but also contextually relevant. The bot is intended to stand out by its ability to talk on scientific topics and interpret user questions.
+
+Target Audience
+---------------
+This project is aimed at users from all backgrounds with a common interest in science, this could be students looking for quick explanations, hobbyists exploring NLP, or other developers looking to take the project further.
+
+Key Features
+------------
+
+Sci-bot's key features include:
+
+- Keyword Extraction: Utilizing NLP techniques to extract pertinent keywords from user queries.
+- Information Retrieval: Fetching information from trusted databases like Wikipedia and DBpedia.
+- Intelligent Response Generation: Leveraging the BERT model trained for question answering, to understand context and generate relevant answers.
+- Humanized Interactions: Crafting responses that are conversational and user-friendly, encouraging users to engage with the bot more naturally.
+- Spell Check and Validation: Ensuring questions are in an acceptable format and free of spelling errors to improve response accuracy without removing scientific terms.
+
+Technology Stack
+-----------------
+
+The core technology stack of Sci-bot includes:
+
+- NLP Libraries: NLTK for linguistic processing and spaCy for sophisticated NLP tasks.
+- Keyword Extraction: YAKE for identifying key phrases and spaCy for extracting nouns and named entities.
+- Question Answering Model: The BERT model, specifically the BERT variant, optimized for question answering.
+- Information Sources: The Wikipedia API and DBpedia SPARQL endpoints for retrieving contextual information.
+
+Unique Selling Points
+----------------------
+
+Sci-bot distinguishes itself through:
+
+- Dynamic Context Retrival: The ability to search for answers in a vast information base.
+- Autonomy: Operating without reliance on external services like GPT-3, ensuring self-sufficiency.
+- Precision: Merging and boosting keywords from multiple extraction methods to refine searches and improve the accuracy of responses.
+
+Challenges Addressed
+---------------------
+
+The Sci-bot tackles the challenge of making scientific knowledge accessible and understandable, breaking down the barriers of technical jargon, and presenting information in a digestible format. It provides a solution for users who need quick and reliable answers to science-related questions.

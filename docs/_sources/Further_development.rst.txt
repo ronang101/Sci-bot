@@ -1,0 +1,85 @@
+Further Development
+===================
+
+Optimization of the Scoring Mechanism
+--------------------------------------
+
+Current Status: Sci-bot's scoring mechanism, which is central to selecting the most relevant sentences from extensive texts, is grounded in keyword matching and lemmatization. Lemmatization converts words to their base or dictionary form, enhancing the match potential—for instance, "weight" becomes "weigh". This process increases the likelihood of identifying sentences that contain different forms of the keywords.
+
+Challenge: Despite its utility, the current scoring mechanism has its limitations. It may not always capture the intended context, especially when dealing with synonyms or phrases that convey the same meaning but use different wording. For example, a user's query about how "high" a flower grows might miss the relevant information if the source text mentions how "tall" the flower grows, and the scoring mechanism fails to recognize "high" and "tall" as synonyms.
+
+Future Goals:
+
+- Synonym Recognition: One area for improvement is the incorporation of a thesaurus or synonym database to bridge the gap between different wordings of similar concepts. The initial attempts at integrating synonyms by using NLTK led to a decrease in precision, suggesting that the approach requires a more refined strategy.
+- Contextual Understanding: Beyond individual words, I aim to enhance the bot's ability to understand the context of sentences, allowing for a more nuanced selection of relevant information. I did attempt this also but it lead to very long processing times so again this requires further thought.
+- Machine Learning for Relevance Scoring: Machine learning models could be trained to predict the relevance of sentences to a given query more effectively, taking into account a wider range of linguistic features beyond keyword matching.
+
+Model Enhancement
+------------------
+
+Current Status: Sci-bot's current iteration leverages the model "bert-large-uncased-whole-word-masking-finetuned-squad", a BERT variant trained on the SQuAD dataset. This model, while not specialized in the scientific domain, provides a solid baseline for general question-answering tasks due to its broad language comprehension.
+
+Challenge: The primary challenge lies in bridging the gap between general language processing and the specific jargon and concepts found in scientific literature. The BERT model used is adept at handling a wide variety of questions but may not be as precise when it comes to the nuances of scientific terminology and data interpretation.
+
+Future Goals:
+
+- Training within SciBERT Framework: Train a model within the SciBERT framework using SQuAD data to more accurately cater to science-related queries.
+- Improving Chatbot Performance: Utilize SciBERT's pre-training on scientific literature and fine-tuned question-answering capabilities from SQuAD to enhance the chatbot's performance in the scientific domain.
+- Maintaining Versatility of BERT: Aim to maintain the versatility of BERT while introducing a level of specificity that enhances the bot's understanding of and responses to science-based questions.
+
+Sensitivity to Question Phrasing
+---------------------------------
+
+Current Status: Sci-bot is proficient in answering a diverse range of questions but is sensitive to the specific phrasing of user queries. This sensitivity can affect the accuracy of responses, as the system's reliance on keyword detection and contextual information retrieval might not fully grasp the essence of the question when phrased differently.
+
+Challenge: The key challenge is to develop a more nuanced understanding of user intent and the semantic relationships between different phrasings. Current keyword-based approaches may falter when faced with synonyms, idiomatic expressions, or varied sentence structures that convey similar meanings.
+
+Future Goals:
+
+- Enhancing Robustness to Variations in Question Phrasing: Develop the chatbot to be more resilient to variations in question phrasing, requiring the integration of advanced natural language processing techniques.
+- Improved User Input Parsing: Implement techniques to parse user input more effectively, enabling the chatbot to better understand the nuances of different questions.
+- Enhanced Contextual Understanding: Enhance the chatbot's ability to understand context with greater depth, allowing for more accurate responses tailored to the specific user query.
+- Recognizing User Intent with Higher Precision: Incorporate methods for recognizing user intent with higher precision, potentially through the training of custom machine learning models capable of discerning intent regardless of phrasing.
+- Transition to Language Nuance Understanding: Evolve Sci-bot from a keyword-dependent chatbot to an AI with a sophisticated grasp of language nuances, marking a significant advancement in its capabilities.
+
+Diverse Data Sources and Error Handling
+-----------------------------------------
+
+Current Status: Sci-bot primarily uses Wikipedia and DBpedia as its data sources, which, while comprehensive, may not cover the entire spectrum of scientific knowledge. The current error handling strategy is basic and may not effectively guide users when their queries fall outside the chatbot's existing knowledge base.
+
+Challenge: The challenge lies in expanding the chatbot's repository of information to encompass more specialized and emerging scientific fields. Additionally, the current error handling mechanism needs to be more robust to handle a variety of edge cases and out-of-scope queries effectively.
+
+Future Goals:
+
+- Expand Data Sources: To incorporate more diverse and specialized data sources that can enrich the chatbot's knowledge base and provide users with a wide array of perspectives on scientific topics.
+- Enhanced Error Handling: To develop sophisticated error handling that can gracefully respond to and manage a broader range of user queries, including those that may not be directly answerable by the chatbot.
+- User Feedback Loop: To implement a feedback mechanism that allows users to contribute to the chatbot's learning process by flagging unsatisfactory answers, which will be invaluable for ongoing improvement.
+
+User Interaction and Interface
+--------------------------------
+
+Current Status: The chatbot's current interface is functional, providing users with direct answers to their questions. However, it lacks interactive elements that could engage users in a more dynamic learning experience.
+
+Challenge: To evolve the chatbot from a simple question-and-answer format to an interactive learning tool that can engage users in a dialogue, test their understanding, and adapt to their learning styles.
+
+Future Goals:
+
+- Interactive Learning Sessions: To introduce interactive learning modules that engage users in dialogues, providing a more immersive educational experience.
+- Personalization: To develop a system that can tailor responses and learning paths based on individual user profiles, preferences, and past interactions.
+
+Scalability and Performance
+-----------------------------
+
+Current Status: The current infrastructure may struggle to maintain performance with more data sources or if ever used by many users at once, potentially leading to longer response times or decreased reliability.
+
+Challenge: The chatbot needs to be scalable to accommodate a growing number of users if this bot was ever to be taken further while maintaining high performance and quick response times.
+
+Future Goals:
+
+- Scalability: To optimize the chatbot's architecture to efficiently handle an increased volume of user interactions simultaneously.
+- Performance Monitoring: To implement a comprehensive monitoring framework that tracks performance metrics and user satisfaction, using this data to continuously refine the chatbot's performance.
+
+Conclusion
+----------
+
+By addressing these challenges, I hope to significantly enhance the chatbot's ability to understand and retrieve information that accurately addresses user queries, even when faced with variations in terminology and phrasing.

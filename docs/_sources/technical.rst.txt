@@ -1,0 +1,78 @@
+Technical Documentation
+=======================
+
+Architecture
+------------
+
+The architecture of Sci-bot is fairly modular, with each component dedicated to handling a specific aspect of the chatbot's functionality. The following is an overview of the main components and their interactions:
+
+Preprocessing:  This includes spell checking the user's query and validating it to ensure it's in a recognizable question format for the next steps.
+
+Keyword Extraction: The input from the user is processed to extract key phrases and terms using YAKE and spaCy. This ensures that the most relevant pieces of the question are identified for further processing.
+
+Information Retrieval: With the keywords at hand, Sci-bot queries Wikipedia and DBpedia to fetch relevant information. This step involves searching through articles and databases to find content that is most likely to contain the answer to the user's query.
+
+Answer Generation: The retrieved information is then passed to the BERT model. The BERT model has been trained on the SQuAD dataset ( Stanford Question Answering Dataset) to provide answers that are contextually relevant to the keywords and information gathered in the previous steps.
+
+User Interaction: The final component involves presenting the information back to the user in an understandable format. This includes spell checking the user's query and validating it to ensure it's in a recognizable question format.
+
+Technologies Used
+-----------------
+
+Sci-bot is built using a variety of technologies and libraries, each chosen for its strengths in handling different aspects of natural language processing and information retrieval:
+
+- Programming Language: Python 3.11.4
+- NLP Libraries: NLTK, spaCy
+- Keyword Extraction: YAKE for statistical keyword extraction, spaCy for NLP-based keyword extraction
+- Question Answering Model: BERT, specifically the exact model we're employing is "bert-large-uncased-whole-word-masking-finetuned-squad," which has been fine-tuned on the Stanford Question Answering Dataset (SQuAD). This configuration ensures optimal performance in understanding and responding to questions based on the provided context.
+- Information Sources: Wikipedia API for accessing Wikipedia content, SPARQLWrapper for querying DBpedia
+- Other Libraries: PyTorch for running the BERT model
+
+Setup and Installation
+-----------------------
+
+To set up and run Sci-bot, follow these instructions:
+
+1. Clone the repository from GitHub to your local machine.
+2. Set up a Python virtual environment in the project directory:
+
+   .. code-block:: bash
+   
+       python -m venv scibotenv
+
+3. Activate the virtual environment:
+
+   On Windows:
+
+   .. code-block:: bash
+   
+       scibotenv\Scripts\activate
+
+   On Unix or MacOS:
+
+   .. code-block:: bash
+   
+       source scibotenv/bin/activate
+
+4. Install the required dependencies:
+
+   .. code-block:: bash
+   
+       pip install -r requirements.txt
+
+   For execution without Docker, run the Start_Chatbot.bat file if possible (open this up and edit the file paths before running), or execute the main script directly:
+
+   .. code-block:: bash
+   
+       chatbot_startup.py
+
+Usage
+-----
+
+To interact with Sci-bot, run the main application script, and when prompted, input your science-related question. Here are some example questions to get you started:
+
+- "What is the boiling point of water?"
+- "How does photosynthesis work?"
+- "What is the average mass of a polar bear?"
+
+Remember to phrase your question using one of the suggested starting keywords for best results.
