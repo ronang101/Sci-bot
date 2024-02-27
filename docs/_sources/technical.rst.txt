@@ -60,7 +60,7 @@ To set up and run Sci-bot, follow these instructions:
    
        pip install -r requirements.txt
 
-   For execution without Docker, run the Start_Chatbot.bat file if possible (open this up and edit the file paths before running), or execute the main script directly:
+   For execution run the Start_Chatbot.bat file if possible (open this up and edit the file paths before running), or execute the main script directly:
 
    .. code-block:: bash
    
