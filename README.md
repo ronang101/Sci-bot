@@ -25,4 +25,4 @@ I welcome contributions to improve Sci-bot's answer model and extend its capabil
 ## Documentation
 For a comprehensive guide on Sci-bot's architecture, setup, usage, and development notes, visit the [documentation site](https://ronang101.github.io/Sci-bot/).
 
-Thank you for exploring Sci-bot. Please note I am aware there is much room for improvement on this project, and I have plans to do this in the future as shown on the documentation site, but given the time restraint (and a bit of extra time I took to extend my code further) this is where I currently am with the project.
+Thank you for exploring Sci-bot. Please note I am aware there is much room for improvement on this project, and I have plans to do this in the future as shown on the documentation site, but given the time restraint (and a bit of extra time I took to extend my code further) this is where I currently am with the project. I would also like to mention that in the future I would like to look into prompt engineering more thoroughly but again I have not yet had time to do this.
